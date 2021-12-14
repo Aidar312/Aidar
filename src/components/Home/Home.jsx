@@ -20,16 +20,16 @@ const Home = () => {
     <div>
       <div className="container">
         <Carousel autoplay>
-          <div>
+          <div className="img-carousel">
             <img style={contentStyle} src={photo} alt="photo_1" />
           </div>
-          <div>
+          <div className="img-carousel">
             <img style={contentStyle} src={photo1} alt="photo_2" />
           </div>
-          <div>
+          <div className="img-carousel">
             <img style={contentStyle} src={photo2} alt="photo_3" />
           </div>
-          <div>
+          <div className="img-carousel">
             <img style={contentStyle} src={photo3} alt="photo_4" />
           </div>
         </Carousel>

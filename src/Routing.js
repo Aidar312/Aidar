@@ -1,7 +1,6 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Auth from "./components/Auth/Auth";
-import BrandsList from "./components/BrandsList/BrandsList";
 import Cart from "./components/Cart/Cart";
 import DetailsProduct from "./components/DetailsProduct/DetailsProduct";
 import EditProduct from "./components/EditProduct/EditProduct";
@@ -30,24 +29,19 @@ const Routing = () => {
       id: 3,
     },
     {
-      link: "/brands",
-      element: <BrandsList />,
-      id: 4,
-    },
-    {
       link: "/products/:id",
       element: <DetailsProduct />,
-      id: 5,
+      id: 4,
     },
     {
       link: "/cart",
       element: <Cart />,
-      id: 6
+      id: 5
     },
     {
       link: "/payment",
       element: <CreditCard />,
-      id: 7
+      id: 6
     },
    
   ];
@@ -73,7 +67,7 @@ const Routing = () => {
         <Route
           path={item.link}
           element={
-            user.email === "aidarbek.mambetaliev@gmail.com" ? (
+            user.email === "aidarbek.mambetaliev@gmail.com" || user.email === "bboy.mars.97@gmail.com" ? (
               item.element
             ) : (
               <Navigate replace to="*" />

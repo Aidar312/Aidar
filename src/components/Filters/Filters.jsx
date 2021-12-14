@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from "react";
 import { Select, Slider } from "antd";
-import { brandsContext } from "../../contexts/brandsContext";
 
 const Filters = ({ brand, setBrand, price, setPrice }) => {
   const { getBrands, brands } = useContext(brandsContext);
@@ -17,11 +16,11 @@ const Filters = ({ brand, setBrand, price, setPrice }) => {
         mode="multiple"
         placeholder="Filter by brand"
       >
-        {brands.map((item) => (
+        {/* {brands.map((item) => (
           <Select.Option value={item.brand} key={item.id}>
             {item.brand}
           </Select.Option>
-        ))}
+        ))} */}
       </Select>
       <Slider
         value={price}
