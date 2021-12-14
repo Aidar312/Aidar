@@ -48,7 +48,7 @@ const Footer = () => {
           <a target="_blank" href="https://www2.hm.com/ru_ru/member/info.html" style={{ color: "black" }}>Станьте участником нашей программы лоаяльности</a>
           <a target="_blank" href="https://www2.hm.com/ru_ru/member/info.html" style={{ color: "black" }}>сейчас и получите скидку в 10% </a>
           <a target="_blank" href="https://www2.hm.com/ru_ru/member/info.html" style={{ color: "black" }}>на вашу следующую покупку онлайн</a>
-          <a target="_blank" href="https://www2.hm.com/ru_ru/member/info.html" style={{ color: "black" }}>ПРОЧИТАТЬ ПОДРОБНЕЕ -->  </a>
+          <a target="_blank" href="https://www2.hm.com/ru_ru/member/info.html" style={{ color: "black" }}>ПРОЧИТАТЬ ПОДРОБНЕЕ</a>
         </div>
 
 
