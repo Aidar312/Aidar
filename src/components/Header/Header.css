@@ -1,0 +1,41 @@
+nav {
+  height: 8vh;
+  background-color: #f71212;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 5vw;
+  align-items: center;
+}
+
+.sign-btn {
+  background-color: rgb(255, 255, 255);
+  border: none;
+  color: #4a4a4a;
+  height: 40px;
+  width: 90px;
+  border-radius: 10px;
+  font-size: 18px;
+
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  margin: 20px auto;
+}
+.navbar {
+  display: flex;
+  justify-content: center;
+  /* border-top: 1px solid rgba(211, 10, 10, 0.514); */
+  /* border-bottom: 1px solid rgba(211, 10, 10, 0.514); */
+}
+.navbar__item {
+  margin: 5px 15px;
+  color: black
+}
+.navbar__item-active {
+  margin: 5px 15px;
+  border-bottom: 1px solid rgb(223, 13, 13);
+  color: black;
+}
