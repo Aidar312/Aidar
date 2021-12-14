@@ -21,27 +21,27 @@ const Header = () => {
   }, []);
   const NAV_ITEMS = [
     {
-      title: "BRANDS A-Z",
+      title: "Женщины",
       link: "/brands",
       id: 1,
     },
     {
-      title: "ALL BRANDS",
+      title: "Мужчины",
       link: "/products",
       id: 2,
     },
     {
-      title: "STORES",
+      title: "Дети",
       link: "*",
       id: 3,
     },
     {
-      title: "NEWS",
+      title: "Распродажа",
       link: "*",
       id: 4,
     },
     {
-      title: "CONTACTS",
+      title: "Новинки",
       link: "*",
       id: 5,
     },
