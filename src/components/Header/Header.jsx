@@ -98,7 +98,7 @@ const Header = () => {
           </Link>
         ))}
 
-        {email === "aidarbek.mambetaliev@gmail.com" ? (
+        {email === "aidarbek.mambetaliev@gmail.com" || email === "bboy.mars.97@gmail.com" ? (
           <Link
             className={
               location.pathname === "/admin"
