@@ -2,14 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { Modal, Button, Form, Input, Select, InputNumber } from "antd";
 
 import { productsContext } from "../../contexts/productsContext";
-import { brandsContext } from "../../contexts/brandsContext";
 
 const AddProductModal = () => {
   const { createProduct } = useContext(productsContext);
-  const { getBrands, brands } = useContext(brandsContext);
-  useEffect(() => {
-    getBrands();
-  }, []);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -43,27 +38,20 @@ const AddProductModal = () => {
           layout="vertical"
         >
           <Form.Item
-            label="Brand"
-            name="brand"
+            label="For"
+            name="for"
             rules={[
               {
                 required: true,
-                message: "Please input brand!",
+                message: "Please input model!",
               },
             ]}
           >
-            <Select>
-              {brands.map((item) => (
-                <Select.Option key={item.id} value={item.brand}>
-                  {item.brand}
-                </Select.Option>
-              ))}
-            </Select>
+            <Input />
           </Form.Item>
-
           <Form.Item
-            label="Model"
-            name="model"
+            label="Category"
+            name="category"
             rules={[
               {
                 required: true,
@@ -120,19 +108,6 @@ const AddProductModal = () => {
               {
                 required: true,
                 message: "Please input URL of image 2!",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-
-          <Form.Item
-            label="Video"
-            name="video"
-            rules={[
-              {
-                required: true,
-                message: "Please input URL of video!",
               },
             ]}
           >

@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import AuthContextProvider from "./contexts/authContext";
 import ProductsContextProvider from "./contexts/productsContext";
-import BrandsContextProvider from "./contexts/brandsContext";
 import CartContextProvider from "./contexts/cartContext";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -14,22 +13,19 @@ const App = () => {
   return (
     <AuthContextProvider>
       <CartContextProvider>
-        <BrandsContextProvider>
-          <ProductsContextProvider>
-            <BrowserRouter>
-              <Header />
-              <Routing />
-              <Footer />
-            </BrowserRouter>
-          </ProductsContextProvider>
-        </BrandsContextProvider>
+        <ProductsContextProvider>
+          <BrowserRouter>
+            <Header />
+            <Routing />
+            <Footer />
+          </BrowserRouter>
+        </ProductsContextProvider>
       </CartContextProvider>
     </AuthContextProvider>
   );
 };
 
 export default App;
-
 
 /*
 CRUD
