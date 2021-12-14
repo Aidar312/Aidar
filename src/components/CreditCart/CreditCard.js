@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "react-credit-cards";
+import './CreditCard.css';
 
 import SupportedCards from "./Cards.js";
 
@@ -66,10 +67,8 @@ export default class App extends React.Component {
 
     return (
       <div key="Payment">
-        <div className="App-payment">
-          {/* <h1>React Credit Cards</h1> */}
-          {/* <h4>Beautiful credit cards for your payment forms</h4> */}
-          <Card
+        <div className="App-payment" style={{marginTop:"20px"}}>
+          <Card 
             number={number}
             name={name}
             expiry={expiry}
@@ -77,19 +76,18 @@ export default class App extends React.Component {
             focused={focused}
             callback={this.handleCallback}
           />
-          <form ref={c => (this.form = c)} onSubmit={this.handleSubmit}>
-            <div className="form-group">
+          <form className="inputCard"  ref={c => (this.form = c)} onSubmit={this.handleSubmit}>
+            <div>
               <input
                 type="tel"
                 name="number"
                 className="form-control"
                 placeholder="Card Number"
-                pattern="[\d| ]{16,22}"
+                maxLength={19}
                 required
                 onChange={this.handleInputChange}
                 onFocus={this.handleInputFocus}
               />
-              {/* <small>E.g.: 49..., 51..., 36..., 37...</small> */}
             </div>
             <div className="form-group">
               <input
@@ -121,7 +119,7 @@ export default class App extends React.Component {
                   name="cvc"
                   className="form-control"
                   placeholder="CVC"
-                  pattern="\d{3,4}"
+                  maxLength={3}
                   required
                   onChange={this.handleInputChange}
                   onFocus={this.handleInputFocus}
@@ -130,42 +128,14 @@ export default class App extends React.Component {
             </div>
             <input type="hidden" name="issuer" value={issuer} />
             <div className="form-actions">
-              <button className="btn btn-primary btn-block">PAY</button>
+              <button className="button" onClick={()=>alert("Платеж успешно проведен")} style={{marginTop:"10px"}}>Оплатить покупку</button>
             </div>
           </form>
-          {formData && (
-            <div className="App-highlight">
-              {formatFormData(formData).map((d, i) => (
-                <div key={i}>{d}</div>
-              ))}
-            </div>
-          )}
-          <hr style={{ margin: "60px 0 30px" }} />
-          {/* <div className="App-badges"> */}
-            {/* <a
-              href="https://github.com/amarofashion/react-credit-cards"
-              className="github__btn"
-            >
-              <img
-                alt="View on GitHub"
-                src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@2017.12/logos/github-icon.svg"
-              />
-              <span>View on GitHub</span>
-            </a> */}
+          
 
-            {/* <a href="https://codesandbox.io/s/ovvwzkzry9">
-              <img
-                alt="Edit ovvwzkzry9"
-                src="https://codesandbox.io/static/img/play-codesandbox.svg"
-              />
-            </a> */}
-          {/* </div> */}
-          {/* <hr style={{ margin: "30px 0" }} /> */}
           <SupportedCards />
         </div>
-        {/* <div className="App-credits">
-          Made with ❤️ at <a href="https://amaro.com/">AMARO</a>.
-        </div> */}
+
       </div>
     );
   }
