@@ -1,14 +1,11 @@
 import React, { useContext, useEffect } from "react";
 import { Select, Slider } from "antd";
 
-const Filters = ({ brand, setBrand, price, setPrice }) => {
-  const { getBrands, brands } = useContext(brandsContext);
-  useEffect(() => {
-    getBrands();
-  }, []);
+const Filters = ({ price, setPrice }) => {
+ 
   return (
     <div style={{ marginTop: "20px" }}>
-      <Select
+      {/* <Select
         allowClear
         style={{ width: "100%" }}
         value={brand}
@@ -16,12 +13,12 @@ const Filters = ({ brand, setBrand, price, setPrice }) => {
         mode="multiple"
         placeholder="Filter by brand"
       >
-        {/* {brands.map((item) => (
+        {brands.map((item) => (
           <Select.Option value={item.brand} key={item.id}>
             {item.brand}
           </Select.Option>
-        ))} */}
-      </Select>
+        ))}
+      </Select> */}
       <Slider
         value={price}
         onChange={(e) => setPrice(e)}
