@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
-import { Button, Form, Input, Select, InputNumber } from "antd";
+import { Button, Form, Input, InputNumber } from "antd";
 import { productsContext } from "../../contexts/productsContext";
 
 const EditProduct = () => {
@@ -8,11 +8,9 @@ const EditProduct = () => {
   const navigate = useNavigate();
   const { getOneProduct, oneProduct, updateProduct } =
     useContext(productsContext);
-  // const { getBrands, brands } = useContext(brandsContext);
   const [form] = Form.useForm();
   useEffect(() => {
     getOneProduct(params.id);
-    getBrands();
   }, []);
   useEffect(() => {
     form.setFieldsValue(oneProduct);
@@ -31,25 +29,6 @@ const EditProduct = () => {
         layout="vertical"
         form={form}
       >
-        {/* <Form.Item
-          label="Brand"
-          name="brand"
-          rules={[
-            {
-              required: true,
-              message: "Please input brand!",
-            },
-          ]}
-        >
-          <Select>
-            {brands.map((item) => (
-              <Select.Option key={item.id} value={item.brand}>
-                {item.brand}
-              </Select.Option>
-            ))}
-          </Select>
-        </Form.Item> */}
-
         <Form.Item
           label="Model"
           name="model"
@@ -109,19 +88,6 @@ const EditProduct = () => {
             {
               required: true,
               message: "Please input URL of image 2!",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item
-          label="Video"
-          name="video"
-          rules={[
-            {
-              required: true,
-              message: "Please input URL of video!",
             },
           ]}
         >

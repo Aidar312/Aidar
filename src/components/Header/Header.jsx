@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import { Badge } from "antd";
-import { ShoppingCartOutlined } from "@ant-design/icons";
+import { ShoppingOutlined,HeartOutlined,StarOutlined } from "@ant-design/icons";
 
 import { useAuth } from "../../contexts/authContext";
 import { cartContext } from "../../contexts/cartContext";
@@ -66,7 +66,7 @@ const Header = () => {
         </div>
       </nav>
       <div className="header">
-        <div></div>
+        <div>
         <Link to="/">
           <img
             width="200px"
@@ -74,14 +74,29 @@ const Header = () => {
             alt="Logo H&M"
           />
         </Link>
-        <div>
-          <Link to="/cart">
-            <Badge count={+cartLength}>
-            <ShoppingCartOutlined
+        </div>
+        <div style={{display:"flex", marginLeft: 510,}}>
+          <div className="icons">
+          <Link to="*">
+            <Badge style={{marginLeft:"10px"}}>
+            < StarOutlined className="favorites"
                 style={{ fontSize: "30px", cursor: "pointer" }}
-              />
+                />
             </Badge>
           </Link>
+
+        </div>
+       
+        <div className="icons">
+          <Link to="/cart">
+            <Badge style={{marginLeft:"10px"}} count={+cartLength}>
+            <ShoppingOutlined className="shop-cart"
+                style={{ fontSize: "30px", cursor: "pointer" }}
+                />
+            </Badge>
+          </Link>
+
+        </div>
         </div>
       </div>
       <div className="navbar">

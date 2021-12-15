@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Modal, Button, Form, Input, Select, InputNumber } from "antd";
+import React, { useContext, useState } from "react";
+import { Modal, Button, Form, Input, InputNumber } from "antd";
 
 import { productsContext } from "../../contexts/productsContext";
 
