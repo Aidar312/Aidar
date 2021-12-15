@@ -38,9 +38,8 @@ const DetailsProduct = () => {
               </Carousel>
             </div>
             <div style={{ width: "40vw" }}>
-              <h2>{product.brand}</h2>
               <h3>{product.model}</h3>
-              <h2>{"$" + product.price}</h2>
+              <h2>{product.price + "p"}</h2>
               <Button
                 size="large"
                 style={{ margin: "15px 0px", width: "100%" }}
@@ -50,7 +49,6 @@ const DetailsProduct = () => {
               <div>{product.description}</div>
             </div>
           </div>
-          <video src={product.video} width="100%" autoPlay loop muted></video>
         </>
       ) : (
         <h2>Loading...</h2>

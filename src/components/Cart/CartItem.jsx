@@ -21,10 +21,9 @@ const CartItem = ({ item }) => {
             }}
           >
             <div>
-              <h3>{item.item.brand}</h3>
               <h4>{item.item.model}</h4>
             </div>
-            <h3>{"$" + item.item.price}</h3>
+            <h3>{item.item.price + "p"}</h3>
           </div>
         }
         description={
@@ -59,7 +58,7 @@ const CartItem = ({ item }) => {
               </div>
               <div>
                 <h4>SubPrice</h4>
-                <h3>{"$" + item.subPrice}</h3>
+                <h3>{item.subPrice + "p"}</h3>
               </div>
             </div>
             <Button style={{marginTop:"8px"}} onClick={() => deleteFromCart(item.item.id)}>

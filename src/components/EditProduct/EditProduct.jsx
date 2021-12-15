@@ -30,6 +30,25 @@ const EditProduct = () => {
         form={form}
       >
         <Form.Item
+          label="ForWho"
+          name="forwho"
+          rules={[
+            {
+              required: true,
+              message: "Please input brand!",
+            },
+          ]}
+        >
+          <Select>
+            {forwho.map((item) => (
+              <Select.Option key={item.id} value={item.forwho}>
+                {item.forwho}
+              </Select.Option>
+            ))}
+          </Select>
+        </Form.Item>
+
+        <Form.Item
           label="Model"
           name="model"
           rules={[

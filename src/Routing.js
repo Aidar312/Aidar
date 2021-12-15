@@ -43,6 +43,11 @@ const Routing = () => {
       element: <CreditCard />,
       id: 6
     },
+    {
+      link: "/category/:for",
+      element: <ProductsList />,
+      id: 7
+    },
    
   ];
   const ADMIN_ROUTES = [

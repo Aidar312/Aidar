@@ -17,6 +17,7 @@ const ProductCard = ({ item }) => {
   useEffect(() => {
     setCheckInCart(checkItemInCart(item.id))
   })
+  console.log('qwe');
   return (
     <Card
       hoverable
@@ -46,7 +47,7 @@ const ProductCard = ({ item }) => {
         description={
           <>
             <h3>{item.model}</h3>
-            <h2>{"$" + item.price}</h2>
+            <h2>{item.price + "p"}</h2>
           </>
         }
       />
