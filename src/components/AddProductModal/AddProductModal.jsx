@@ -1,10 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Modal, Button, Form, Input, Select, InputNumber } from "antd";
+import React, { useContext, useState } from "react";
+import { Modal, Button, Form, Input, InputNumber } from "antd";
 
 import { productsContext } from "../../contexts/productsContext";
 
 const AddProductModal = () => {
   const { createProduct } = useContext(productsContext);
+
+  const forWho = ["women", "men", "babies", "sales"]
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -37,9 +39,29 @@ const AddProductModal = () => {
           autoComplete="off"
           layout="vertical"
         >
+              <Form.Item
+          label="ForWho"
+          name="for"
+          rules={[
+            {
+              required: true,
+              message: "Please input brand!",
+            },
+          ]}
+        >
+          <Select>
+            {forWho.map((item, index) => (
+              <Select.Option key={index} value={item}>
+                {item}
+              </Select.Option>
+            ))}
+          </Select>
+        </Form.Item>
+
+         
           <Form.Item
-            label="For"
-            name="for"
+            label="Model"
+            name="model"
             rules={[
               {
                 required: true,

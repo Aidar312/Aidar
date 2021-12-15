@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { Card } from "antd";
 import {
-  ShoppingCartOutlined,
+  ShoppingOutlined,
   EllipsisOutlined,
   StarOutlined,
   HeartOutlined
@@ -17,6 +17,7 @@ const ProductCard = ({ item }) => {
   useEffect(() => {
     setCheckInCart(checkItemInCart(item.id))
   })
+  console.log('qwe');
   return (
     <Card
       hoverable
@@ -24,13 +25,9 @@ const ProductCard = ({ item }) => {
       style={{ width: "280px", margin: "10px" }}
       cover={<img alt="example" src={item.image1} />}
       actions={[
-        <StarOutlined style={{ color: "black", fontSize: "25px" }} />,
-        <HeartOutlined  style={{ color: checkInCart ? "red" : "black", fontSize: "25px" }}
-        onClick={() => {
-          addProductToCart(item);
-          setCheckInCart(checkItemInCart(item.id));
-        }} />,
-        <ShoppingCartOutlined
+        <StarOutlined style={{ color:"black", fontSize: "25px" }} />,
+        <HeartOutlined  style={{color:"black", fontSize: "25px" }}/>,
+        <ShoppingOutlined
           style={{ color: checkInCart ? "red" : "black", fontSize: "25px" }}
           onClick={() => {
             addProductToCart(item);
@@ -50,7 +47,7 @@ const ProductCard = ({ item }) => {
         description={
           <>
             <h3>{item.model}</h3>
-            <h2>{"$" + item.price}</h2>
+            <h2>{item.price + "p"}</h2>
           </>
         }
       />
