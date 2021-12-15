@@ -22,27 +22,27 @@ const Header = () => {
   const NAV_ITEMS = [
     {
       title: "Женщины",
-      link: "/brands",
+      link: "category/women",
       id: 1,
     },
     {
       title: "Мужчины",
-      link: "/products",
+      link: "category/men",
       id: 2,
     },
     {
       title: "Дети",
-      link: "*",
+      link: "category/babies",
       id: 3,
     },
     {
       title: "Распродажа",
-      link: "*",
+      link: "sales",
       id: 4,
     },
     {
       title: "Новинки",
-      link: "*",
+      link: "news",
       id: 5,
     },
   ];

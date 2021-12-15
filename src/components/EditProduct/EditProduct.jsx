@@ -12,7 +12,6 @@ const EditProduct = () => {
   const [form] = Form.useForm();
   useEffect(() => {
     getOneProduct(params.id);
-    getBrands();
   }, []);
   useEffect(() => {
     form.setFieldsValue(oneProduct);
@@ -32,8 +31,8 @@ const EditProduct = () => {
         form={form}
       >
         {/* <Form.Item
-          label="Brand"
-          name="brand"
+          label="ForWho"
+          name="forwho"
           rules={[
             {
               required: true,
@@ -42,9 +41,9 @@ const EditProduct = () => {
           ]}
         >
           <Select>
-            {brands.map((item) => (
-              <Select.Option key={item.id} value={item.brand}>
-                {item.brand}
+            {forwho.map((item) => (
+              <Select.Option key={item.id} value={item.forwho}>
+                {item.forwho}
               </Select.Option>
             ))}
           </Select>
@@ -109,19 +108,6 @@ const EditProduct = () => {
             {
               required: true,
               message: "Please input URL of image 2!",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item
-          label="Video"
-          name="video"
-          rules={[
-            {
-              required: true,
-              message: "Please input URL of video!",
             },
           ]}
         >

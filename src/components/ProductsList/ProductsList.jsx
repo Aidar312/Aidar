@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useParams } from "react-router-dom";
 
 import { Input, Pagination, Empty } from "antd";
 
@@ -21,34 +21,43 @@ const ProductsList = () => {
   const [limit, setLimit] = useState(
     searchParams.get("_limit") ? searchParams.get("_limit") : 4
   );
-  const [brand, setBrand] = useState([]);
+  const [category, setCategory] = useState(
+    searchParams.get("for") ? searchParams.get("for") : ""
+  );
   const [price, setPrice] = useState([1, 1000000]);
   const [showFilters, setShowFilters] = useState(false);
-  const { getProducts, products, productsTotalCount } =
+  const { getProducts, products, productsTotalCount, getProductsFor } =
     useContext(productsContext);
+    const params = useParams();
   useEffect(() => {
+    searchParams.set("for", params.for)
     setSearchParams({
       q: search,
       _page: page,
       _limit: limit,
-      brand: brand,
       price_gte: price[0],
       price_lte: price[1],
+      for: category,
     });
   }, []);
+  console.log(params);
   useEffect(() => {
-    getProducts();
+    getProductsFor();
   }, [searchParams]);
   useEffect(() => {
     setSearchParams({
       q: search,
       _page: page,
       _limit: limit,
-      brand: brand,
       price_gte: price[0],
       price_lte: price[1],
+      for: category,
     });
-  }, [search, page, limit, brand, price]);
+  }, [search, page, limit, price, category]);
+  useEffect(() => {
+    setCategory(params.for);
+    console.log(1);
+  }, [params.for]);
   console.log(products);
   return (
     <div className="container" style={{ marginTop: "20px" }}>
@@ -66,14 +75,7 @@ const ProductsList = () => {
           placeholder="Search..."
         />
       </div>
-      {showFilters ? (
-        <Filters
-          brand={brand}
-          setBrand={setBrand}
-          price={price}
-          setPrice={setPrice}
-        />
-      ) : null}
+      {showFilters ? <Filters price={price} setPrice={setPrice} /> : null}
       <div className="products-list">
         {products.length > 0 ? (
           products.map((item) => <ProductCard item={item} />)
