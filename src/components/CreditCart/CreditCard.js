@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import { Modal, Button } from "antd";
 import Card from "react-credit-cards";
-import './CreditCard.css';
+import "./CreditCard.css";
 
 import SupportedCards from "./Cards.js";
 
@@ -8,135 +9,91 @@ import {
   formatCreditCardNumber,
   formatCVC,
   formatExpirationDate,
-  formatFormData
+  formatFormData,
 } from "./utils";
 
 import "react-credit-cards/es/styles-compiled.css";
 
-export default class App extends React.Component {
-  state = {
+// const handleClick = () => {
+//   return setClickCheckModal(true)
+// };
+// const handleExit = () => {
+//   return setClickCheckModal(false)
+// };
+
+const CreditCard = () => {
+  const [card, setCard] = useState({
     number: "",
     name: "",
     expiry: "",
     cvc: "",
-    issuer: "",
     focused: "",
-    formData: null
+    isModalVisible: false,
+  });
+
+  const showModal = (isModalVisible) => {
+    setCard({ ...card, isModalVisible });
   };
 
-  handleCallback = ({ issuer }, isValid) => {
-    if (isValid) {
-      this.setState({ issuer });
-    }
+  const handleInputFocus = (e) => {
+    setCard({ ...card, focus: e.target.name });
   };
 
-  handleInputFocus = ({ target }) => {
-    this.setState({
-      focused: target.name
-    });
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setCard({ ...card, [name]: value });
   };
 
-  handleInputChange = ({ target }) => {
-    if (target.name === "number") {
-      target.value = formatCreditCardNumber(target.value);
-    } else if (target.name === "expiry") {
-      target.value = formatExpirationDate(target.value);
-    } else if (target.name === "cvc") {
-      target.value = formatCVC(target.value);
-    }
+  return (
+    <div id="PaymentForm">
+      <Card
+        cvc={card.cvc}
+        expiry={card.expiry}
+        focused={card.focus}
+        name={card.name}
+        number={card.number}
+      />
+      <form>
+        <input
+          type="tel"
+          name="number"
+          placeholder="Card Number"
+          onChange={handleInputChange}
+          onFocus={handleInputFocus}
+        />
+        <input
+          type="tel"
+          name="cvc"
+          placeholder="CVC"
+          onChange={handleInputChange}
+          onFocus={handleInputFocus}
+        />
+        <Button
+          className="button form-actions"
+          type="primary"
+          onClick={() => showModal(true)}
+        >
+          Open Modal
+        </Button>
+        {card.isModalVisible ? (
+          <Modal
+            title="Basic Modal"
+            visible={card.isModalVisible}
+            onOk={() => showModal(false), () => alert("Платеж успешно совершен!"), !showModal}
+            onCancel={() => showModal(false)}
+          >
+            <input type="text" placeholder="Имя" />
+            <input type="text" placeholder="Фамилия" />
+            <input type="number" placeholder="Номер телефона" />
+            <input type="text" placeholder="Страна" />
+            <input type="text" placeholder="Адрес" />
+            <input type="text" placeholder="Почтовый индекс" />
+          </Modal>
+        ) : null}
+        ...
+      </form>
+    </div>
+  );
+};
 
-    this.setState({ [target.name]: target.value });
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-    const { issuer } = this.state;
-    const formData = [...e.target.elements]
-      .filter(d => d.name)
-      .reduce((acc, d) => {
-        acc[d.name] = d.value;
-        return acc;
-      }, {});
-
-    this.setState({ formData });
-    this.form.reset();
-  };
-
-  render() {
-    const { name, number, expiry, cvc, focused, issuer, formData } = this.state;
-
-    return (
-      <div key="Payment">
-        <div className="App-payment" style={{marginTop:"20px"}}>
-          <Card 
-            number={number}
-            name={name}
-            expiry={expiry}
-            cvc={cvc}
-            focused={focused}
-            callback={this.handleCallback}
-          />
-          <form className="inputCard"  ref={c => (this.form = c)} onSubmit={this.handleSubmit}>
-            <div>
-              <input
-                type="tel"
-                name="number"
-                className="form-control"
-                placeholder="Card Number"
-                maxLength={19}
-                required
-                onChange={this.handleInputChange}
-                onFocus={this.handleInputFocus}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="text"
-                name="name"
-                className="form-control"
-                placeholder="Name"
-                required
-                onChange={this.handleInputChange}
-                onFocus={this.handleInputFocus}
-              />
-            </div>
-            <div className="row">
-              <div className="col-6">
-                <input
-                  type="tel"
-                  name="expiry"
-                  className="form-control"
-                  placeholder="Valid Thru"
-                  pattern="\d\d/\d\d"
-                  required
-                  onChange={this.handleInputChange}
-                  onFocus={this.handleInputFocus}
-                />
-              </div>
-              <div className="col-6">
-                <input
-                  type="tel"
-                  name="cvc"
-                  className="form-control"
-                  placeholder="CVC"
-                  maxLength={3}
-                  required
-                  onChange={this.handleInputChange}
-                  onFocus={this.handleInputFocus}
-                />
-              </div>
-            </div>
-            <input type="hidden" name="issuer" value={issuer} />
-            <div className="form-actions">
-              <button className="button" onClick={()=>alert("Платеж успешно проведен")} style={{marginTop:"10px"}}>Оплатить покупку</button>
-            </div>
-          </form>
-          
-
-          <SupportedCards />
-        </div>
-
-      </div>
-    );
-  }
-}
+export default CreditCard;
