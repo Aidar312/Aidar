@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Modal, Button, Form, Input, InputNumber } from "antd";
 
 import { productsContext } from "../../contexts/productsContext";
+import Select from "rc-select";
 
 const AddProductModal = () => {
   const { createProduct } = useContext(productsContext);
